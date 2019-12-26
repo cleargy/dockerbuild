@@ -10,8 +10,8 @@ WORKDIR /home
 RUN yum install -y wget && \
     rpm --rebuilddb && \
     yum install -y tar && \
-    wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u231-linux-x64.tar.gz && \
-    tar -xvzf jdk-8u231-linux-x64.tar.gz && \
+    wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz" && \
+    tar -xvzf jdk-8u141-linux-x64.tar.gz && \
     wget https://mirrors.cnnic.cn/apache/tomcat/tomcat-8/v8.5.50/bin/apache-tomcat-8.5.50.tar.gz && \
     tar -xvzf apache-tomcat-8.5.50.tar.gz && \ 
     mv apache-tomcat-8.5.50/ tomcat && \
@@ -21,7 +21,7 @@ RUN yum install -y wget && \
     yum clean all
 
 # 设置环境变量
-ENV JAVA_HOME /home/jdk1.8.0_231
+ENV JAVA_HOME /home/jdk1.8.0_141
 ENV CATALINA_HOME /home/tomcat
 ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
 ENV TZ Asia/Shanghai
