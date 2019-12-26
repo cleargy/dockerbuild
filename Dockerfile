@@ -10,18 +10,18 @@ WORKDIR /home
 RUN yum install -y wget && \
     rpm --rebuilddb && \
     yum install -y tar && \
-    wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz && \
-    tar -xvzf jdk-8u172-linux-x64.tar.gz && \
-    wget http://mirrors.shu.edu.cn/apache/tomcat/tomcat-8/v8.5.31/bin/apache-tomcat-8.5.31.tar.gz && \
-    tar -xvzf apache-tomcat-8.5.31.tar.gz && \ 
-    mv apache-tomcat-8.5.31/ tomcat && \
-    rm -f jdk-8u172-linux-x64.tar.gz && \
-    rm -f apache-tomcat-8.5.31.tar.gz && \    
+    wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn/java/jdk/8u221-b11/230deb18db3e4014bb8e3e8324f81b43/jdk-8u221-linux-x64.tar.gz && \
+    tar -xvzf jdk-8u221-linux-x64.tar.gz && \
+    wget https://mirrors.cnnic.cn/apache/tomcat/tomcat-8/v8.5.50/bin/apache-tomcat-8.5.50.tar.gz && \
+    tar -xvzf apache-tomcat-8.5.50.tar.gz && \ 
+    mv apache-tomcat-8.5.50/ tomcat && \
+#    rm -f jdk-8u172-linux-x64.tar.gz && \
+#    rm -f apache-tomcat-8.5.31.tar.gz && \    
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     yum clean all
 
 # 设置环境变量
-ENV JAVA_HOME /home/jdk1.8.0_172
+ENV JAVA_HOME /home/jdk1.8.0_221
 ENV CATALINA_HOME /home/tomcat
 ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
 ENV TZ Asia/Shanghai
